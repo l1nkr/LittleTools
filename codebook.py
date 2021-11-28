@@ -3,6 +3,7 @@ import hashlib
 import json
 import sys
 import getopt
+import getpass
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
 from Crypto.Util.Padding import unpad
@@ -28,7 +29,7 @@ def encrypt(dir, key):
 
     file.close()
     file = open(dir, "w")
-    json.dump(passwd, file)
+    json.dump(passwd, file, indent=4, sort_keys=True)
     file.close() 
     
 def decrypt(dir, key):
@@ -46,7 +47,7 @@ def decrypt(dir, key):
             passwd[key] = plaintext.decode('utf-8')
     file.close()
     file = open(dir, "w")
-    json.dump(passwd, file)
+    json.dump(passwd, file, indent=4, sort_keys=True)
     file.close()
 
 if __name__ == "__main__":
@@ -74,8 +75,7 @@ if __name__ == "__main__":
         print('usage: codebook.py -c <encrypt|decrypt> -d <dir of codebook>')
         sys.exit()
     
-    print("Please input key")
-    key = input()
+    key = getpass.getpass("Please input key:  ")
     key = hashlib.sha256(key.encode()).digest()
     # encrypt or decrypt
 
