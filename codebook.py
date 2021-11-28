@@ -58,12 +58,12 @@ if __name__ == "__main__":
     try:
         opts, args = getopt.getopt(argv,"hc:d:k:")
     except getopt.GetoptError:
-        print('usage: passwd_pad.py -c <encrypt|decrypt> -d <dir of passwd pad>')
+        print('usage: codebook.py -c <encrypt|decrypt> -d <dir of codebook>')
         sys.exit()
 
     for opt, arg in opts:
         if opt == '-h':
-            print('usage: passwd_pad.py -c <encrypt|decrypt> -d <dir of passwd pad>')
+            print('usage: codebook.py -c <encrypt|decrypt> -d <dir of codebook>')
             sys.exit()
         elif opt == '-c':
             mode = arg
@@ -71,7 +71,7 @@ if __name__ == "__main__":
             dir = arg
 
     if dir == '' or mode == '':
-        print('usage: passwd_pad.py -c <encrypt|decrypt> -d <dir of passwd pad>')
+        print('usage: codebook.py -c <encrypt|decrypt> -d <dir of codebook>')
         sys.exit()
     
     print("Please input key")
